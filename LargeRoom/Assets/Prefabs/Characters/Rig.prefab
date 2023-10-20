@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   speed: 2
-  turnSpeed: 100
+  turnSpeed: 75
   gravity: -98.1
   moveInputSource:
     m_UseReference: 1

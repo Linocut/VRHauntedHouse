@@ -15,7 +15,7 @@ public class SceneChanger : MonoBehaviour
             if (_instance == null)
             {
                 _instance = value;
-                DontDestroyOnLoad(value);
+                //DontDestroyOnLoad(value);
             }
             else if (_instance != value)
             {
