@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Candle1.unity
     guid: 5883ce65298cb6846859c1120d41636f
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: a7ccb00d84c6ccb43b652292cc5cce57
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ec497a4230bab13408afa50602b8358b,
       type: 2}
