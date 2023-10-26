@@ -36,6 +36,7 @@ public class GoInBed : MonoBehaviour
         Transform playerTransform = XROriginObj.transform;
         Debug.Log("Player original" + playerTransform);
         Debug.Log("New transform " + newTransform);
+        playerObj.GetComponent<CloseEyes>().canClose = true; 
         if (newTransform != null)
         {
             playerTransform.position = newTransform.position;

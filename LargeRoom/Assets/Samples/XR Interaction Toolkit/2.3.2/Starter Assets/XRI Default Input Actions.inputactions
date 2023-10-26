@@ -639,6 +639,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CloseEyes",
+                    "type": "Button",
+                    "id": "c968a8f2-0b5d-437a-b160-566f8f420bb4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -771,6 +780,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Translate Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "651b92b7-9c1d-4d51-a591-a2b296f501d0",
+                    "path": "<XRController>/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseEyes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1355,6 +1375,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CloseEyes",
+                    "type": "Button",
+                    "id": "4b330f22-99e2-463f-9735-fa3f82b78d6d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1487,6 +1516,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Translate Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e578f90f-1ca5-48ea-a9a2-60700a67fed2",
+                    "path": "<XRController>/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseEyes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
