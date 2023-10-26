@@ -7,12 +7,14 @@ public class GoInBed : MonoBehaviour
 {
     public Transform newTransform;
     public GameObject playerObj;
+    public GameObject XROriginObj;
     public GameObject managerObj; 
     public XRInteractionManager xrInteractionManager;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        XROriginObj = GameObject.FindGameObjectWithTag("XROrigin");
         managerObj = GameObject.FindGameObjectWithTag("GameController");
         xrInteractionManager = managerObj.GetComponent<XRInteractionManager>();
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
@@ -27,28 +29,25 @@ public class GoInBed : MonoBehaviour
             Debug.LogError("XR Grab Interactable or XR Interaction Manager not assigned.");
         }
     }
+  
 
-    public void GetInteract()
+    public void GoIn()
     {
-        playerObj.GetComponent<Interact>().OnInteract(); 
-    }
-    public void GoIn(GameObject player)
-    {
-        
-        Transform playerTransform = player.transform;
-
+        Transform playerTransform = XROriginObj.transform;
+        Debug.Log("Player original" + playerTransform);
+        Debug.Log("New transform " + newTransform);
         if (newTransform != null)
         {
             playerTransform.position = newTransform.position;
 
-            playerTransform.rotation = newTransform.rotation;
-
-            playerTransform.localScale = newTransform.localScale;
+            //playerTransform.rotation = newTransform.rotation;
         }
         else
         {
             Debug.LogError("The newTransform variable is not assigned. Please assign a Transform in the Inspector.");
         }
+
+        Debug.Log("player New" + playerTransform);
     }
 
 

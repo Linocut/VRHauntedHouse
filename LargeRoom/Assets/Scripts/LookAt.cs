@@ -8,7 +8,7 @@ public class LookAt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("XROrigin");
     }
 
     // Update is called once per frame
@@ -18,6 +18,10 @@ public class LookAt : MonoBehaviour
         {
             // Make this object look at the player
             transform.LookAt(player.transform);
+        }
+        else
+        {
+            player = GameObject.FindWithTag("XROrigin");
         }
     }
 }

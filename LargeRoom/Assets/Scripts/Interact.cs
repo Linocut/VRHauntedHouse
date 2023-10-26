@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Interact : MonoBehaviour
 {
-    public InputActionProperty interactInputSource;
-    public float fovRadius;
-    public float fovAngle;
-    public LayerMask interactionMask;
-    public LayerMask obstructionMask;
-    private GameObject targetObject;
-    private string passString;
-
+    //public InputActionProperty interactInputSource;
+    //public float fovRadius;
+    //public float fovAngle;
+    //public LayerMask interactionMask;
+    //public LayerMask obstructionMask;
+    //private GameObject targetObject;
+    // private string passString;
+    /*
     private string checkObject()
     {
         //the following code is the interaction logic 
@@ -33,7 +33,7 @@ public class Interact : MonoBehaviour
                     {
                         targetObject = target.gameObject;
                         passString = target.gameObject.tag;
-                        if (target.gameObject.tag != "Untagged")
+                        if (target.gameObject.tag == "Bed")
                         {
                             return passString;
                         }
@@ -45,17 +45,18 @@ public class Interact : MonoBehaviour
 
         return passString;
     }
-    public void OnInteract()
+    
+    public void OnInteract(GameObject targetObject)
     {
         Debug.Log("Interact");
        
-        string objectName = checkObject();
-        if (objectName == "Bed")
-        {
-            targetObject.GetComponent<GoInBed>().GoIn(this.gameObject);
-            Debug.Log("did it");
-        }
+        //string objectName = checkObject();
+       
+        targetObject.GetComponent<GoInBed>().GoIn(this.gameObject);
+        Debug.Log("did it");
+       
 
         
     }
+    */
 }
