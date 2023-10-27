@@ -1,22 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SleepMonster : MonoBehaviour
 {
     public GameObject monster;
     public AudioSource monsterSteps;
-    public bool isDone;
+    public AudioSource monsterScream;
 
     private Coroutine monsterCoroutine;
-    private int numberOfCoroutines; 
+    private Transform mainCamera;
+    private Vector3 originalPosition;
+    public bool isDone;
+    public GameObject instruction3; 
+   
 
     void OnEnable()
     {
-        // Get a reference to xr origin by finding the object with the tag "XROrigin"
-        Transform xrOrigin = GameObject.FindGameObjectWithTag("XROrigin").transform;
-        // Start the coroutine
-        monsterCoroutine = StartCoroutine(ActivateMonsterCoroutine(xrOrigin));
+        mainCamera = Camera.main.transform; // Assuming the main camera is tagged as "MainCamera"
+        if (!isDone)
+        {
+            monster.SetActive(true);
+            // Play monster steps sound
+            if (monsterSteps != null)
+            {
+                monsterSteps.Play();
+            }
+
+            // Reset monster position and start the coroutine when the object is enabled
+            originalPosition = new Vector3(0f, 0f, 1.8f);
+            ResetMonsterPosition();
+            monsterCoroutine = StartCoroutine(ActivateMonsterCoroutine(mainCamera));
+
+        }
+     
+       
+
+        
     }
 
     void OnDisable()
@@ -27,39 +46,59 @@ public class SleepMonster : MonoBehaviour
             StopCoroutine(monsterCoroutine);
             monsterCoroutine = null;
         }
+
+        monster.SetActive(false);
     }
 
-    IEnumerator ActivateMonsterCoroutine(Transform xrOrigin)
+    IEnumerator ActivateMonsterCoroutine(Transform targetTransform)
     {
-        // Set the monster object active
-        monster.SetActive(true);
-
-        // Play monster steps sound
-        if (monsterSteps != null)
-        {
-            monsterSteps.Play();
-        }
-
-        float duration = 5f; // Duration for the movement
         float elapsedTime = 0f;
 
-        Vector3 initialPosition = monster.transform.position;
+        while (elapsedTime < 7.8f) // Run for 8 seconds
+        {
+            if (elapsedTime < 3f)
+            {
+                MoveMonster(0.08f);
+            }
+            else if (elapsedTime < 5.5f)
+            {
+                MoveMonster(0.2f);
+            }
+            else if (elapsedTime < 6f)
+            {
+                MoveMonster(0f);
+                if (monsterSteps != null)
+                {
+                    monsterScream.Play();
+                }
+            }
+            else
+            {
+                
+                MoveMonster(2.5f);
 
-        // Adjust the offset based on the number of times the coroutine has been called
-        Vector3 offset = new Vector3(1f * numberOfCoroutines, 0f, 1f * numberOfCoroutines);
+                // Play another noise or perform other actions
+                
+            }
 
-        Vector3 targetPosition = xrOrigin.position + offset;
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
 
-        // Move the monster to the new position instantly
-        monster.transform.position = targetPosition;
-
-        // Wait for the specified duration
-        yield return new WaitForSeconds(duration);
-
-        // Increment the number of coroutines
-        numberOfCoroutines++;
-
-        // Set isDone to true when the coroutine is done
         isDone = true;
+        monster.SetActive(false);
+        instruction3.SetActive(true);
+    }
+
+    void MoveMonster(float speed)
+    {
+        Vector3 directionToTarget = (mainCamera.position - monster.transform.position).normalized;
+        monster.transform.Translate(directionToTarget * speed * Time.deltaTime, Space.World);
+    }
+
+    void ResetMonsterPosition()
+    {
+        // Reset the monster to its original position (relative to the parent)
+        monster.transform.position = monster.transform.parent.TransformPoint(originalPosition);
     }
 }
