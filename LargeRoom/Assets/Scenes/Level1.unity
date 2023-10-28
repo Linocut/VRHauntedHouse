@@ -8550,6 +8550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 288033816955941776, guid: 8ccd02f09dc372a43921d1829752b21b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2927774998596734839, guid: 8ccd02f09dc372a43921d1829752b21b,
         type: 3}
       propertyPath: m_InteractionManager
