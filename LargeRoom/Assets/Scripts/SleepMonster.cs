@@ -6,12 +6,12 @@ public class SleepMonster : MonoBehaviour
     public GameObject monster;
     public AudioSource monsterSteps;
     public AudioSource monsterScream;
+    public string instructions;
 
     private Coroutine monsterCoroutine;
     private Transform mainCamera;
     private Vector3 originalPosition;
     public bool isDone;
-    public GameObject instruction3; 
    
 
     void OnEnable()
@@ -30,12 +30,7 @@ public class SleepMonster : MonoBehaviour
             originalPosition = new Vector3(0f, 0f, 1.8f);
             ResetMonsterPosition();
             monsterCoroutine = StartCoroutine(ActivateMonsterCoroutine(mainCamera));
-
         }
-     
-       
-
-        
     }
 
     void OnDisable()
@@ -52,6 +47,7 @@ public class SleepMonster : MonoBehaviour
 
     IEnumerator ActivateMonsterCoroutine(Transform targetTransform)
     {
+        SubtitleManager.instance.AddText("disappear", 0);
         float elapsedTime = 0f;
 
         while (elapsedTime < 7.8f) // Run for 8 seconds
@@ -87,7 +83,7 @@ public class SleepMonster : MonoBehaviour
 
         isDone = true;
         monster.SetActive(false);
-        instruction3.SetActive(true);
+        SubtitleManager.instance.AddText(instructions);
     }
 
     void MoveMonster(float speed)

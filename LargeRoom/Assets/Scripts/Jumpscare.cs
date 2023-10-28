@@ -11,7 +11,7 @@ public class Jumpscare : MonoBehaviour
     public float jitterTime = .1f;
     public float offset = 1f;
     public float moveSpeed = 20f;
-    public float jitterAmount = 10;
+    public float jitterAmount = 10f;
 
     Transform playerCam;
     private Transform lookPos;
@@ -38,7 +38,7 @@ public class Jumpscare : MonoBehaviour
         }
         else if (!jumping)
         {
-            ogCamPos = playerCam.transform.parent.transform.position;
+            ogCamPos = playerCam.transform.position;
         }
     }
 
@@ -46,7 +46,7 @@ public class Jumpscare : MonoBehaviour
     {
         finishedLoop = false;
         float degree = Random.Range(-jitterAmount, jitterAmount); // Determines a random value between two values to jitter the camera
-        playerCam.position = new Vector3(ogCamPos.x, ogCamPos.y, ogCamPos.z + degree); // Moves the camera according to 'degree' value
+        playerCam.position = ogCamPos + (lookPos.forward * degree); // Moves the camera according to 'degree' value
 
         yield return new WaitForSeconds(jitterTime);
         finishedLoop = true;

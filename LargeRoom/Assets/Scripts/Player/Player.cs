@@ -5,6 +5,32 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    #region Singleton
+    private static Player _singleton;
+    public static Player Singleton
+    {
+        get => _singleton;
+        private set
+        {
+            if (_singleton == null)
+            {
+                _singleton = value;
+                DontDestroyOnLoad(value);
+            }
+            else if (_singleton != value)
+            {
+                Debug.Log($"{nameof(Player)} instance already exists, destoying duplicate");
+                Destroy(value);
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        Singleton = this;
+    }
+    #endregion
+
     public bool canMove = true;
     public float speed = 0.0625f;
     public float turnSpeed = 65f;
