@@ -47,7 +47,10 @@ public class SleepMonster : MonoBehaviour
 
     IEnumerator ActivateMonsterCoroutine(Transform targetTransform)
     {
-        SubtitleManager.instance.AddText("disappear", 0);
+        if (SubtitleManager.instance != null)
+        {
+            SubtitleManager.instance.AddText("disappear", 0);
+        }
         float elapsedTime = 0f;
 
         while (elapsedTime < 7.8f) // Run for 8 seconds
@@ -83,7 +86,10 @@ public class SleepMonster : MonoBehaviour
 
         isDone = true;
         monster.SetActive(false);
-        SubtitleManager.instance.AddText(instructions);
+        if (SubtitleManager.instance != null)
+        {
+            SubtitleManager.instance.AddText(instructions);
+        }
     }
 
     void MoveMonster(float speed)
