@@ -10321,8 +10321,28 @@ PrefabInstance:
       objectReference: {fileID: 159405861}
     - target: {fileID: 5336614227867301360, guid: 8ccd02f09dc372a43921d1829752b21b,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336614227867301360, guid: 8ccd02f09dc372a43921d1829752b21b,
+        type: 3}
       propertyPath: bodyHeightMax
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460879599525045380, guid: 8ccd02f09dc372a43921d1829752b21b,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460879599525045380, guid: 8ccd02f09dc372a43921d1829752b21b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460879599525045380, guid: 8ccd02f09dc372a43921d1829752b21b,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6196771858214701262, guid: 8ccd02f09dc372a43921d1829752b21b,
         type: 3}
